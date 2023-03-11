@@ -40,8 +40,8 @@ export default function Movie({ movie }: MovieProps) {
                     </Typography>
                 </div>
                 <div className="flex gap-8 pt-4">
-                    <button className="w-20 h-8 text-md font-semibold bg-red-500 rounded-sm hover:bg-red-600">Delete</button>
-                    <button className="w-20 h-8 text-md font-semibold bg-blue-500 rounded-sm hover:bg-blue-600">Edit</button>
+                    <button className="w-20 h-8 text-md font-semibold bg-red-500 rounded-sm hover:bg-red-600">Deletar</button>
+                    <button className="w-20 h-8 text-md font-semibold bg-blue-500 rounded-sm hover:bg-blue-600">Editar</button>
                 </div>
             </CardFooter>
         </Card>

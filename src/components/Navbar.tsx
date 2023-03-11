@@ -11,7 +11,7 @@ export default function Navbar() {
                 className="rounded-sm bg-red-500 w-24 h-10 text-white no-underline transition hover:bg-red-700"
                 onClick={sessionData ? () => void signOut() : () => void signIn()}
             >
-                {sessionData ? "Sign out" : "Sign in"}
+                {sessionData ? "Sair" : "Entrar"}
             </button>
         </div>
     )
