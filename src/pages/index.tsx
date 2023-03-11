@@ -7,14 +7,11 @@ import { api } from "~/utils/api";
 import Movies from "~/components/Movies";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>
-    <div className="w-screen h-screen bg-gray-500">
-
-        <AuthShowcase /> 
-    </div>
+      <AuthShowcase /> 
     </>
   );
 };
@@ -24,33 +21,30 @@ export default Home;
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
 
-  const { data: secretMessage } = api.example.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: sessionData?.user !== undefined },
-  );
+  // const { data: secretMessage } = api.example.getSecretMessage.useQuery(
+  //   undefined, // no input
+  //   { enabled: sessionData?.user !== undefined },
+  // );
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
-
-      <p className="text-center text-2xl text-white">
+    <div className="bg-gray-500 flex flex-col items-center justify-center">
+      <p className="text-center text-xl text-white">
         {sessionData && <span>Logged in as {sessionData.user?.email}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
+        {/* {secretMessage && <span> - {secretMessage}</span>} */}
       </p>
       <button
-        className="rounded-full bg-black px-10 py-3 font-semibold text-white no-underline transition hover:bg-gray-500"
+        className="rounded-full bg-black px-10 py-3 font-semibold text-white no-underline transition hover:bg-red-500"
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}
       </button>
       {sessionData && (
-          <div className="grid grid-cols-4 gap-4 md:gap-8">
-            <div className="flex flex-col gap-6 items-center justify-center rounded-xl bg-white/10 p-4 w-screen text-white">
-              <h3 className="text-xl font-bold">Movies</h3>
-              <div className="w-full h-full grid grid-cols-3">
+            <div className="flex flex-col gap-6 items-center rounded-xl text-white">
+              <h3 className="text-xl font-bold pt-4">Movies</h3>
+              <div className="grid grid-cols-4 gap-10">
                 <Movies />
               </div>
             </div>
-          </div>
         )}
     </div>
   );
