@@ -19,7 +19,23 @@ export const movieRouter = createTRPCRouter({
         image: 'fake',
         description: 'fake',
         note: 5
-      }
+      },
+      {
+        id: 'fake2',
+        name: 'fake',
+        duration: 'fake',
+        image: 'fake',
+        description: 'fake',
+        note: 7
+      },
+      {
+        id: 'fake3',
+        name: 'fake',
+        duration: 'fake',
+        image: 'fake',
+        description: 'fake',
+        note: 10
+      },
     ]
   }),
   createMovie: protectedProcedure.input(moviesInput).mutation(async ({ ctx, input }) => {
