@@ -16,7 +16,7 @@ export default function Movie({ movie }: MovieProps) {
     const { id, name, duration, image, description, note } = movie
 
     return (
-        <Card className="w-64 bg-gray-900 border-4 border-gray-900 hover:bg-black hover:border-black hover:cursor-pointer">
+        <Card className="w-64 bg-[#1B1A17] border-4 border-[#1B1A17] hover:bg-black hover:border-black hover:cursor-pointer">
             <CardHeader color="blue" className="relative h-56">
                 <img
                     src="https://image.cachorrogato.com.br/textimages/cachorrinho-ideal-chihuahua"
