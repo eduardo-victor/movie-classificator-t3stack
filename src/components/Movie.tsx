@@ -7,19 +7,29 @@ import {
     CardFooter,
     Typography,
 } from "@material-tailwind/react";
+import Trpc from "~/pages/api/trpc/[trpc]";
 
 type MovieProps = {
     movie: Movie
 }
 
 export default function Movie({ movie }: MovieProps) {
+
+    const trpc = api.useContext()
+    const {mutate: deleteMutation} = api.movie.deleteMovie.useMutation({
+        onSettled: async () => {
+            await trpc.movie.allMovies.invalidate()
+        }
+    })
+
     const { id, name, duration, image, description, note } = movie
+    console.log(image)
 
     return (
         <Card className="w-64 bg-[#1B1A17] border-4 border-[#1B1A17] hover:bg-black hover:border-black hover:cursor-pointer">
             <CardHeader color="blue" className="relative h-56">
                 <img
-                    src="https://image.cachorrogato.com.br/textimages/cachorrinho-ideal-chihuahua"
+                    src={image}
                     alt="img-blur-shadow"
                     className="h-full w-full rounded-lg"
                 />
@@ -40,8 +50,7 @@ export default function Movie({ movie }: MovieProps) {
                     </Typography>
                 </div>
                 <div className="flex gap-8 pt-4">
-                    <button className="w-20 h-8 text-md font-semibold bg-red-500 rounded-sm hover:bg-red-600">Deletar</button>
-                    <button className="w-20 h-8 text-md font-semibold bg-blue-500 rounded-sm hover:bg-blue-600">Editar</button>
+                    <button onClick={() => {deleteMutation(id)}} className="w-20 h-8 text-md font-semibold bg-red-500 rounded-sm hover:bg-red-600">Deletar</button>
                 </div>
             </CardFooter>
         </Card>
