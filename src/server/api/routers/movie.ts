@@ -10,57 +10,16 @@ export const movieRouter = createTRPCRouter({
         userId: ctx.session.user.id,
       }
     });
-    console.log('movies from prisma:', movies.map(({ id, name, duration, image, description, note }) => ({ id, name, duration, image, description, note })));
-    return [
-      {
-        id: 'fake',
-        name: 'fake',
-        duration: 'fake',
-        image: 'fake',
-        description: 'fake',
-        note: 5
-      },
-      {
-        id: 'fake2',
-        name: 'fake',
-        duration: 'fake',
-        image: 'fake',
-        description: 'fake',
-        note: 7
-      },
-      {
-        id: 'fake3',
-        name: 'fake',
-        duration: 'fake',
-        image: 'fake',
-        description: 'fake',
-        note: 10
-      },
-      {
-        id: 'fake4',
-        name: 'fake',
-        duration: 'fake',
-        image: 'fake',
-        description: 'fake',
-        note: 10
-      },
-      {
-        id: 'fake7',
-        name: 'fake',
-        duration: 'fake',
-        image: 'fake',
-        description: 'fake',
-        note: 10
-      },
-    ]
+    return movies.map(({ id, name, duration, image, description, note }) => ({ id, name, duration, image, description, note }));
+
   }),
   createMovie: protectedProcedure.input(moviesInput).mutation(async ({ ctx, input }) => {
     return ctx.prisma.movies.create({
       data: {
-        name: input,
-        duration: input,
-        image: input,
-        description: input,
+        name: input.name,
+        duration: input.duration,
+        image: input.image,
+        description: input.description,
         user: {
           connect: {
             id: ctx.session.user.id,
@@ -86,17 +45,17 @@ export const movieRouter = createTRPCRouter({
       note: z.number()
 
     })).mutation(async ({ ctx, input }) => {
-    return ctx.prisma.movies.update({
-      where: {
-        id: input.id,
-      },
-      data: {
-        name: input.name,
-        duration: input.duration,
-        image: input.image,
-        description: input.description,
-        note: input.note
-      }
-    })
-  }),
+      return ctx.prisma.movies.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          name: input.name,
+          duration: input.duration,
+          image: input.image,
+          description: input.description,
+          note: input.note
+        }
+      })
+    }),
 });

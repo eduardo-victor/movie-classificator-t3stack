@@ -30,7 +30,7 @@ const AuthShowcase: React.FC = () => {
           {modalOpen ?
             <div className="w-full h-full flex items-center justify-center gap-3">
               <ModalAdd />
-              <button onClick={() => { setModalOpen(false) }} className="text-2xl text-white font-semibold w-10 h-10 rounded-sm bg-red-500 hover:bg-red-600 hover:text-3xl transition ease-linear delay-300">X</button>
+              <button onClick={() => { setModalOpen(false) }} className="text-2xl text-white font-semibold w-10 h-10 rounded-sm bg-red-500 hover:bg-red-600 hover:transition hover:ease-linear hover:delay-300">X</button>
             </div>
             :
             <div className="flex flex-col gap-6 items-center rounded-xl text-white">
