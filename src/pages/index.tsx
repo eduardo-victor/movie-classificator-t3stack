@@ -26,7 +26,6 @@ const AuthShowcase: React.FC = () => {
     <div className="bg-[#FFACAC] h-screen flex flex-col p-4">
       {sessionData && (
         <div className="flex flex-col gap-6 items-center rounded-xl text-white">
-          <button onClick={openModal} className="w-28 h-12 text-md rounded-sm font-semibold bg-blue-500 hover:bg-blue-800 transition ease-in-out delay-75">Adicionar Filme</button>
           {modalOpen ?
             <div className="w-full h-full flex items-center justify-center gap-3">
               <ModalAdd />
@@ -34,6 +33,7 @@ const AuthShowcase: React.FC = () => {
             </div>
             :
             <div className="flex flex-col gap-6 items-center rounded-xl text-white">
+              <button onClick={openModal} className="w-28 h-12 text-md rounded-sm font-semibold bg-blue-500 hover:bg-blue-800 transition ease-in-out delay-75">Adicionar Filme</button>
               <h3 className="text-3xl font-bold font-mono">Lista de Filmes</h3>
               <div className="grid grid-cols-4 gap-10">
                 <Movies />
