@@ -4,6 +4,8 @@ import { toast } from 'react-hot-toast';
 import { api } from '~/utils/api';
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import { Link } from 'react-router-dom';
+
 
 interface Movie {
     name: string,
@@ -18,7 +20,7 @@ function ModalAdd() {
     const [name, setName] = useState('')
     const [duration, setDuration] = useState('')
     const [description, setDescription] = useState('')
-    const [rating, setRating] = useState(1)
+    const [rating, setRating] = useState(3)
 
     const { mutate } = api.movie.createMovie.useMutation()
 
@@ -27,7 +29,7 @@ function ModalAdd() {
             e.preventDefault()
             try {
                 mutate({ name: name, duration: duration, description: description, note: rating })
-                toast.success("Filme adicionado com sucesso...")
+                toast.success("Filme adicionado com sucesso...");
             } catch (error) {
                 toast.error("Ah não, algo deu errado D:")
             }
