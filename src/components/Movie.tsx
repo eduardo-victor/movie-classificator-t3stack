@@ -22,18 +22,10 @@ export default function Movie({ movie }: MovieProps) {
         }
     })
 
-    const { id, name, duration, image, description, note } = movie
-    console.log(image)
+    const { id, name, duration, description, note } = movie
 
     return (
         <Card className="w-64 bg-[#1B1A17] border-4 border-[#1B1A17] hover:bg-black hover:border-black hover:cursor-pointer">
-            <CardHeader color="blue" className="relative h-56">
-                <img
-                    src={image}
-                    alt="img-blur-shadow"
-                    className="h-full w-full rounded-lg"
-                />
-            </CardHeader>
             <CardBody className="text-center">
                 <Typography variant="h5" className="mb-2">
                     {name}
