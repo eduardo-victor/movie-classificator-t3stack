@@ -11,6 +11,5 @@ export const moviesInput = z.object({
     name: z.string(),
     description: z.string(),
     duration: z.string(),
-    image: z.any(),
     note: z.number()
 })

@@ -70,7 +70,6 @@ model Movies {
     id String @id @default(cuid())
     name String
     duration String
-    image String
     description String
     note Int @default(0)
     user User @relation(fields: [userId], references: [id])

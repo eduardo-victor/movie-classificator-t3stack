@@ -23,7 +23,7 @@ const AuthShowcase: React.FC = () => {
   const openModal = () => { setModalOpen(true) }
 
   return (
-    <div className="bg-[#FFACAC] flex flex-col p-4">
+    <div className="bg-[#FFACAC] h-screen flex flex-col p-4">
       {sessionData && (
         <div className="flex flex-col gap-6 items-center rounded-xl text-white">
           <button onClick={openModal} className="w-28 h-12 text-md rounded-sm font-semibold bg-blue-500 hover:bg-blue-800 transition ease-in-out delay-75">Adicionar Filme</button>

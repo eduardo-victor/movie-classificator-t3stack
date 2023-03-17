@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { moviesInput } from "~/types";
-
 import { createTRPCRouter, publicProcedure, protectedProcedure, } from "~/server/api/trpc";
 
 export const movieRouter = createTRPCRouter({
@@ -10,7 +9,7 @@ export const movieRouter = createTRPCRouter({
         userId: ctx.session.user.id,
       }
     });
-    return movies.map(({ id, name, duration, image, description, note }) => ({ id, name, duration, image, description, note }));
+    return movies.map(({ id, name, duration, description, note }) => ({ id, name, duration, description, note }));
 
   }),
   createMovie: protectedProcedure.input(moviesInput).mutation(async ({ ctx, input }) => {
@@ -18,8 +17,8 @@ export const movieRouter = createTRPCRouter({
       data: {
         name: input.name,
         duration: input.duration,
-        image: input.image,
         description: input.description,
+        note: input.note,
         user: {
           connect: {
             id: ctx.session.user.id,
@@ -40,7 +39,6 @@ export const movieRouter = createTRPCRouter({
       id: z.string(),
       name: z.string(),
       duration: z.string(),
-      image: z.string(),
       description: z.string(),
       note: z.number()
 
@@ -52,7 +50,6 @@ export const movieRouter = createTRPCRouter({
         data: {
           name: input.name,
           duration: input.duration,
-          image: input.image,
           description: input.description,
           note: input.note
         }
